@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/Jars/controlsfx-8.40.12.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/Jars/eclipselink.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/Jars/javax.persistence.source_2.1.1.v201509150925.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/Jars/javax.persistence_2.1.1.v201509150925.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/eclipse-workspace/AgiliBlueHelpGenerator/resources/sqljdbc42.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/ModelMapper/modelmapper-0.7.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Admin/git/LIVRES-Implantacao/resources/JarsEclipse/MysqlJDBC/mysql-connector-java-5.1.42-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
