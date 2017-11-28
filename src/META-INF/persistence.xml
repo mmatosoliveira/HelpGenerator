@@ -7,7 +7,7 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
    
-  <persistence-unit name="BlueHelper">
+  <persistence-unit name="dbo">
       <!-- fornecedor (provider) JPA: EclipseLink -->
       <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 
@@ -18,19 +18,19 @@
       <!-- propriedades desta unidade de persistência -->
       <properties>
       
-      <property name="javax.persistence.jdbc.url"
+      <!--  <property name="javax.persistence.jdbc.url"
                    value="jdbc:mysql://localhost:3306/BlueHelper?useSSL=false"/>
          <property name="javax.persistence.jdbc.driver"
                    value="com.mysql.jdbc.Driver"/>
                    <property name="javax.persistence.jdbc.user"
                    value="user"/>
          <property name="javax.persistence.jdbc.password"
-                   value="user"/>   
+                   value="user"/>   -->
                    
-	  	<!-- <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+	  	 <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
       	<property name="javax.persistence.jdbc.url"    value="jdbc:sqlserver://aglti030\SQL2016:61433;databaseName=BlueHelper" />
       	<property name="javax.persistence.jdbc.user" value="desenv" />
-      	<property name="javax.persistence.jdbc.password" value="SYSTEM_AGILI" />  -->
+      	<property name="javax.persistence.jdbc.password" value="SYSTEM_AGILI" /> 
          
          <property name="eclipselink.logging.level" value="SEVERE"/>
          <!-- a aplicação NÃO será executada em um servidor de aplicações -->
@@ -42,7 +42,7 @@
                    value="database"/>
                    
           <property name="eclipselink.ddl-generation"
-                   value="create-or-extend-tables"/>
+                   value="none"/>
                    
       </properties>
    </persistence-unit>

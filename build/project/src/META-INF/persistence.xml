@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- as informações do elemento 'persistence' a seguir estão disponíveis -->
+<!-- à partir da versão 2.1 da Java Persistence API (JPA) -->
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                   http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+   
+  <persistence-unit name="dbo">
+      <!-- fornecedor (provider) JPA: EclipseLink -->
+      <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+      <!-- lista as classes do Modelo de Objetos anotadas para JPA -->
+      <class>helpgenerator.model.Aplicacao</class>
+      <class>helpgenerator.model.HelpAplicacao</class>
+      <exclude-unlisted-classes/>
+      <!-- propriedades desta unidade de persistência -->
+      <properties>
+      
+      <!--  <property name="javax.persistence.jdbc.url"
+                   value="jdbc:mysql://localhost:3306/BlueHelper?useSSL=false"/>
+         <property name="javax.persistence.jdbc.driver"
+                   value="com.mysql.jdbc.Driver"/>
+                   <property name="javax.persistence.jdbc.user"
+                   value="user"/>
+         <property name="javax.persistence.jdbc.password"
+                   value="user"/>   -->
+                   
+	  	 <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+      	<property name="javax.persistence.jdbc.url"    value="jdbc:sqlserver://aglti030\SQL2016:61433;databaseName=BlueHelper" />
+      	<property name="javax.persistence.jdbc.user" value="desenv" />
+      	<property name="javax.persistence.jdbc.password" value="SYSTEM_AGILI" /> 
+         
+         <property name="eclipselink.logging.level" value="SEVERE"/>
+         <!-- a aplicação NÃO será executada em um servidor de aplicações -->
+         <property name="eclipselink.target-server" value="None"/>
+         <!-- a propriedade a seguir é opcional, pois 'database' é padrão  -->
+         <!-- a opção 'database' fará com que os comandos DDL (Data -->
+         <!-- Definition Language) sejam criadas somente na base de dados-->
+         <property name="eclipselink.ddl-generation.output-mode"
+                   value="database"/>
+                   
+          <property name="eclipselink.ddl-generation"
+                   value="none"/>
+                   
+      </properties>
+   </persistence-unit>
+</persistence>

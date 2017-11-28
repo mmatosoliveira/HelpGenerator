@@ -26,7 +26,7 @@ public class AplicacaoDto {
 
 	@Override
 	public String toString() {
-		return idAplicacao + " - " + nomeAplicacao;
+		return "(" + idAplicacao + ")"+ " - " + nomeAplicacao;
 	}
 
 	@Override

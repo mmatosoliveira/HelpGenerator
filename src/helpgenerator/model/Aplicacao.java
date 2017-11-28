@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(schema="BlueHelper", name="Aplicacao")
+@Table(schema="dbo", name="Aplicacao")
 public class Aplicacao {
 	public Aplicacao() {}
 	

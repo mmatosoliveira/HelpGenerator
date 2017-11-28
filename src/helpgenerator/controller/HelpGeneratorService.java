@@ -2,15 +2,13 @@ package helpgenerator.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
 import org.modelmapper.ModelMapper;
-
 import helpgenerator.model.Aplicacao;
+import helpgenerator.model.HelpAplicacao;
 import helpgenerator.utils.AplicacaoDto;
 
 public class HelpGeneratorService {
@@ -19,7 +17,7 @@ public class HelpGeneratorService {
 	private EntityManager        em;
 	
 	private void createEntityManagerFactory() {
-		emf = Persistence.createEntityManagerFactory("BlueHelper");
+		emf = Persistence.createEntityManagerFactory("dbo");
 	}
 
 	private void closeEntityManagerFactory() {
@@ -57,20 +55,39 @@ public class HelpGeneratorService {
 		return retorno;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String gerarScriptHelps(long idAplicacao, boolean gerarTodos) {
 		createEntityManagerFactory();
 			createEntityManager();
-				Query query;
+			Query q;
+			if(!gerarTodos) {
+				q = em.createQuery("select o from HelpAplicacao o where o.aplicacao.id = :idAplicacao");
+				q.setParameter("idAplicacao", idAplicacao);
+			}
+			else
+				 q = em.createQuery("select o from HelpAplicacao o");
+			
+			
+			
+			String scriptFinal = "";
+			
+			List<HelpAplicacao> passos = q.getResultList();
+			
+			for(HelpAplicacao item : passos) {
+				String validacao = "IF EXISTS (SELECT * FROM HelpAplicacao WHERE Id = " + item.getId() + " AND Ordem = " + item.getOrdem() + ") ";
+				String update = " UPDATE HelpAplicacao SET Titulo = " + item.getTitulo() + ", Detalhamento = " + item.getDetalhamento() + " WHERE Id = " + item.getId() + " AND Ordem = " + item.getOrdem();
+				String insert = " ELSE INSERT INTO HelpAplicacao (IdAplicacao, Ordem, Titulo, Detalhamento)";
+				String values = "VALUES ("+ item.getIdAplicacao() + ", " + item.getOrdem() + ", "+ item.getTitulo() +", "+ item.getDetalhamento() +")";
 				
-				if(gerarTodos)
-					query = em.createNativeQuery("CALL ASPGeraHelpsAplicacao ("+null+")");
-				else
-					query = em.createNativeQuery("CALL ASPGeraHelpsAplicacao ("+idAplicacao+")");
 				
-				String retorno = (String)query.getSingleResult();
+				String script = validacao + update + insert + values;
+				
+				scriptFinal += script;
+			}
+				
 			closeEntityManager();
 		closeEntityManagerFactory();
 		
-		return retorno;
+		return scriptFinal;
 	}
 }
